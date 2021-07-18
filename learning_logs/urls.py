@@ -17,6 +17,7 @@ Including another URLconf
 from django.urls import path
 from . import views
 
+
 app_name = 'learning_logs'
 
 urlpatterns = [
@@ -26,4 +27,6 @@ urlpatterns = [
     path('topics/', views.topics, name='topics'),
     #individual topic pages
     path('topics/<int:topic_id>/', views.topic, name='topic'),
+    #form for user to input new_topic
+    path('new_topic/', views.new_topic, name='new_topic'),
     ]

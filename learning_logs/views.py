@@ -19,3 +19,6 @@ def topic(request, topic_id):
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic': topic, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
+
+#def new_topic():
+    """form where user can create a new topic"""
