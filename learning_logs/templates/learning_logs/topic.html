@@ -10,8 +10,9 @@
         <ul>
         {% for entry in entries %}
             <li>
-            <p>{{entry.date_added|date:'M d, Y h:i:sa' }}</p>
-            <p>{{entry.text|linebreaks }}</p>
+            <p>
+                <a href="{% url 'learning_logs:edit_entry' entry.id %}">{{entry.date_added|date:'M d, Y h:i:sa'}}</p></a>
+            <p>{{entry.text|linebreaks}}</p>
             </li>
         {% empty %}
             <p> There are no entries for this topic. </p>
