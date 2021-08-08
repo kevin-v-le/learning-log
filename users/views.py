@@ -6,16 +6,19 @@ from django.contrib.auth.forms import UserCreationForm
 def register(request):
     """form where new users can register"""
     if request.method != 'POST':
-        #no data submitted, process data
+        #display blank registration form
         form = UserCreationForm()
     else:
-        #POST data submitted, process data
+        #POST data submitted, process completed form
         form = UserCreationForm(data=request.POST)
+
         if form.is_valid():
-            form.save()
-            return redirect('learning_logs:topics')
+            new_user = form.save()
+            #log the user in and then redirect to home page
+            login(request, new_user)
+            return redirect('learning_logs:index')
 
     #display a blank or invalid form
-    context = {'register': register}
+    context = {'form': form}
     return render(request, 'registration/register.html', context)
 
