@@ -39,7 +39,9 @@ def new_topic(request):
         form = TopicForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect('learning_logs:topics')
+        #associate new topic with the current user
+        topic.owner = request.user
+        return redirect('learning_logs:topics')
 
     #display a blank or invalid form.
     context = {'form': form}
