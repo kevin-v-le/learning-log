@@ -71,6 +71,9 @@ def edit_entry(request, entry_id):
     """form where user can edit an existing entry"""
     entry = Entry.objects.get(id=entry_id)
     topic = entry.topic #topic is an attribute of the Entry model in models.py
+    #protecting the edit_entry page
+    if topic.owner != request.user:
+        raise Http404
 
     if request.method != 'POST':
         #populate the form with the existing entry
