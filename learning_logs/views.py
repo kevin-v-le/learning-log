@@ -5,8 +5,8 @@ from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
 
 #refactoring. create check_topic_owner() function
-def check_topic_owner():
-    if topic.owner != request.user:
+def check_topic_owner(owner, request): #owner is a made up argument, made this on the spot
+    if owner != request.user:
         raise Http404
 
 # Create your views here.
@@ -27,7 +27,7 @@ def topic(request, topic_id):
     """show a single topic and all its entries"""
     topic = Topic.objects.get(id=topic_id)
     # make sure the topic belongs to the current user
-    check_topic_owner()
+    check_topic_owner(topic.owner, request)
 
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic': topic, 'entries': entries}
@@ -80,7 +80,7 @@ def edit_entry(request, entry_id):
     entry = Entry.objects.get(id=entry_id)
     topic = entry.topic #topic is an attribute of the Entry model in models.py
     #protecting the edit_entry page
-    check_topic_owner()
+    check_topic_owner(topic.owner, request)
 
     if request.method != 'POST':
         #populate the form with the existing entry
