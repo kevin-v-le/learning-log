@@ -50,11 +50,15 @@
       </div>
     </nav>
 
-<main>
-  <div class="container pb-2" id="page_header">
+<main role="main" class="container">
+  <div class="pb-2 mb-2 border-bottom">
+    {% block page_header %} {% endblock page_header %}
   </div>
-
-  <div class="content">
+  <div>
+    {% block content %} {% endblock content %}
   </div>
-
 </main>
+
+</body>
+
+</html>
