@@ -36,5 +36,5 @@ urlpatterns = [
     #page for users to edit their entries
     path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry'),
     #fav icon
-    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.ico')))
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('images/favicon.ico')))
     ]
