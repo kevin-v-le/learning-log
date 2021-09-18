@@ -2,14 +2,15 @@
 {% load bootstrap4 %}
 
 {% block content %}
+
 <form action="{% url 'users:register' %}" method="post">
   {% csrf_token %}
   {% bootstrap_form form %}
-
   {% buttons %}
     <button class="btn btn-primary" name="submit">Register</button>
   {% endbuttons %}
 
   <input type="hidden" name="next" value="{% url 'learning_logs:index' %}">
 </form>
+
 {% endblock content %}
