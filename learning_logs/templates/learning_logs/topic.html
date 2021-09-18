@@ -2,7 +2,7 @@
 {% load bootstrap4 %}
 
 {% block page_header %}
-    <h1>{{ topic }}</h1>
+    <h3>{{ topic }}</h3>
 {% endblock page_header %}
 
 {% block content %}
@@ -11,7 +11,7 @@
     </p>
 
     {% for entry in entries %}
-        <div class="card border-primary text-black bg-light mb-3">
+        <div class="card border-primary bg-light mb-3">
             <div class="card-header"><h4><a href="{% url 'learning_logs:edit_entry' entry.id %}">{{entry.date_added|date:'l, M d, Y h:ia'}}</h4></a></div>
             <div class="card-body">
                 <p class="card-text">{{entry.text|linebreaks}}</p>
