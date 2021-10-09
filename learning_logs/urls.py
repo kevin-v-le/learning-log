@@ -16,9 +16,6 @@ Including another URLconf
 """defines URL patterns for learning_logs"""
 from django.urls import path
 from . import views
-from django.contrib.staticfiles.storage import staticfiles_storage
-from django.views.generic.base import RedirectView
-
 
 app_name = 'learning_logs'
 
@@ -35,6 +32,4 @@ urlpatterns = [
     path('new_entry/<int:topic_id>/', views.new_entry, name='new_entry'),
     #page for users to edit their entries
     path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry'),
-    #fav icon
-    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('images/favicon.ico')))
     ]
